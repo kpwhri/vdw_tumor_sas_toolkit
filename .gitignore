@@ -1,0 +1,4 @@
+# Ignore everything but SAS and Markdown
+*.*
+!*.sas
+!*.md
