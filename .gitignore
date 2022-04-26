@@ -2,3 +2,5 @@
 *.*
 !*.sas
 !*.md
+filenames.sas
+run.sas
