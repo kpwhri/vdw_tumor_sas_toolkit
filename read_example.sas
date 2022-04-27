@@ -6,6 +6,7 @@
 
 * %ReadNAACCRv18(input_file,output_dset);
 
+* Helper macros;
 %macro no_comma(input_string);
     %sysfunc(tranword(&input_string.,',',' '));
 %mend;
@@ -57,15 +58,16 @@
     title;
 %mend;
 
-
+* XML NAACCR IDs;
 %let keep_list = textUsualOccupation textUsualIndustry;
+* XML NAACCR IDs with _l to indicate length;
 %let keep_list_len = textUsualOccupation_l textUsualIndustry_l;
 
 
 
 options orientation = landscape ;
 ods graphics / height = 8in width = 10in imagemap = on ;
-
+* because this is an ad hod query, setting the output to the programming folder .gitignore will ignore all output.;
 %let out_folder = %sysfunc(pathname(s)) ;
 
 ods html5 path = "&out_folder" (URL=NONE)
@@ -74,14 +76,7 @@ ods html5 path = "&out_folder" (URL=NONE)
                  style = magnify
                  nogfootnote
                  device = svg
-                 /* options(svg_mode = "embed") */
                     ;
-
-* ods word file = "&out_folder.read_example.docx" ;
-
-
-
-
 
 * int_reg;
 %ReadNAACCRv18(int_reg, int_reg_d(keep=&keep_list));
